@@ -18,7 +18,7 @@ class ViewImageViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = dish?.comment
-        self.imageView.image = dish?.image
+        self.imageView.image = UIImage(data: (dish?.image)!)
 
     }
     

@@ -65,6 +65,12 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     /* CLLocationManagerDelegate */
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        
+        print(error.description)
+        
+    }
+
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let currentLocation = locations.last {

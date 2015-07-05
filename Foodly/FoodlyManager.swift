@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
 class FoodlyManager {
-    
-    var restaurants : [Restaurant] = [Restaurant]()
     
     class var sharedInstance: FoodlyManager {
         struct Static {
@@ -25,70 +24,71 @@ class FoodlyManager {
         return Static.instance!
     }
     
-    func populateRestaurants() {
+    func restaurants() -> Array<Restaurant>? {
         
-        self.restaurants.removeAll()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+        // Retrieve all restaurants
+        let fetchRequest = NSFetchRequest(entityName: "Restaurant")
+
+        do {
         
-        let restaurant = Restaurant(title: "Casa Pepe", latitude: -3.691004, longitude: 40.425419, address: "Calle Manuel Tovar 42")
-        let dish = Dish(image: UIImage(named: "restaurant"), comment: "Las patatas bravas son de los mejores platos que tiene aqui. Pedirlas siempre muy picantes.")
-        restaurant.dishes.append(dish)
-        self.restaurants.append(restaurant)
+            if let restaurants = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [Restaurant] {
+                
+                return restaurants
+            }
         
-    }
-    
-    func addRestaurant(title: String, latitude: Double, longitude: Double, address: String) {
-        let restaurant = Restaurant(title: title, latitude: latitude, longitude: longitude, address: address)
-        restaurants.append(restaurant)
-    }
-    
-    func addDishToRestaurant(restaurant : Restaurant, image: UIImage, comment: String) {
-        let dish = Dish(image: image, comment: comment)
-        restaurant.dishes.append(dish)
-    }
-    
-    func randomImageFromRestaurant(restaurant : Restaurant) -> UIImage? {
-        
-        let dishNumber : Int = restaurant.dishes.count
-        if dishNumber > 0 {
-            let randomDish = Int(arc4random_uniform(UInt32(dishNumber - 1)))
-            return restaurant.dishes[randomDish].image
-        } else {
-            return nil
+        } catch {
+            print("Error while loading restaurants")
         }
         
+        return nil
     }
+    
+    func addRestaurant(title: String, latitude: Double, longitude: Double, address: String) -> Restaurant {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+        let restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: appDelegate.managedObjectContext) as! Restaurant
+        
+        restaurant.title = title
+        restaurant.latitude = latitude
+        restaurant.longitude = longitude
+        restaurant.address = address
+        return restaurant
+    
+    }
+    
+    func addDishToRestaurant(restaurant : Restaurant, image: UIImage, comment: String) -> Dish {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let dish = NSEntityDescription.insertNewObjectForEntityForName("Dish", inManagedObjectContext: appDelegate.managedObjectContext) as! Dish
+        
+        dish.image = UIImagePNGRepresentation(image)
+        dish.comment = comment
+        dish.restaurant = restaurant
+
+        return dish
+    }
+    
+//    func randomImageFromRestaurant(restaurant : Restaurant) -> UIImage? {
+//        
+//        let dishNumber : Int = restaurant.dishes!.count
+//        if dishNumber > 0 {
+//            let randomDishNumber = Int(arc4random_uniform(UInt32(dishNumber - 1)))
+//            let dish = restaurant.dishes[randomDishNumber] as! Dish
+//            return UIImage(data: dish.image)
+//        } else {
+//            return nil
+//        }
+//        
+//    }
     
     func save() {
-        
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-        let docsDir = dirPaths[0] as String
-        let dataFilePath = docsDir.stringByAppendingPathComponent("foodly.archive")
-        
-        if (NSKeyedArchiver.archiveRootObject(self.restaurants, toFile: dataFilePath)) {
-            print("Guardado correctamente")
-        } else {
-            print("Error al guardar")
-        }
-        
-    }
-    
-    func load() {
-        
-        let filemgr = NSFileManager.defaultManager()
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-        
-        let docsDir = dirPaths[0] as String
-        let dataFilePath = docsDir.stringByAppendingPathComponent("foodly.archive")
-        
-        if filemgr.fileExistsAtPath(dataFilePath) {
-            let dataArray = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath) as! [Restaurant]
-            self.restaurants = dataArray
-            print("Recuperamos los datos de disco")
-            
-        } else {
-            print("No hay datos grabados aún.")
-        }
-        
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.saveContext()
     }
     
 }

@@ -15,13 +15,16 @@
 		271C2E701B388EA0002E15CD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C2E6F1B388EA0002E15CD /* ListViewController.swift */; };
 		271C2E721B388ECB002E15CD /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C2E711B388ECB002E15CD /* RestaurantCell.swift */; };
 		271C2E741B38A859002E15CD /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C2E731B38A859002E15CD /* RestaurantViewController.swift */; };
-		271C2E791B38AADA002E15CD /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C2E781B38AADA002E15CD /* Restaurant.swift */; };
+		272B25DD1B45D29100DA6445 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 272B25DB1B45D29100DA6445 /* Model.xcdatamodeld */; };
 		275DA3431B3EC9D500CEDE00 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DA3421B3EC9D500CEDE00 /* DishCell.swift */; };
 		27712CDA1B3B4F1E0092CCBE /* FoodlyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27712CD91B3B4F1E0092CCBE /* FoodlyManager.swift */; };
 		27723B751B3F170900810723 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723B741B3F170900810723 /* AddRestaurantViewController.swift */; };
 		27723B771B3F234200810723 /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723B761B3F234200810723 /* AddDishViewController.swift */; };
 		27C376751B45CD9A004F8C6B /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C376741B45CD9A004F8C6B /* ViewImageViewController.swift */; };
-		27D38AFA1B3ECA23005D733E /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38AF91B3ECA23005D733E /* Dish.swift */; };
+		27E186191B49870800A830DD /* Dish+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186151B49870800A830DD /* Dish+CoreDataProperties.swift */; };
+		27E1861A1B49870800A830DD /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186161B49870800A830DD /* Dish.swift */; };
+		27E1861B1B49870800A830DD /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186171B49870800A830DD /* Restaurant+CoreDataProperties.swift */; };
+		27E1861C1B49870800A830DD /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186181B49870800A830DD /* Restaurant.swift */; };
 		27E900281B425EBF003BE505 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E9002A1B425EBF003BE505 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -57,14 +60,16 @@
 		271C2E6F1B388EA0002E15CD /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		271C2E711B388ECB002E15CD /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		271C2E731B38A859002E15CD /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
-		271C2E781B38AADA002E15CD /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		2739B7EC1B40520B00FCF5C9 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		272B25DC1B45D29100DA6445 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		275DA3421B3EC9D500CEDE00 /* DishCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		27712CD91B3B4F1E0092CCBE /* FoodlyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodlyManager.swift; sourceTree = "<group>"; };
 		27723B741B3F170900810723 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		27723B761B3F234200810723 /* AddDishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
 		27C376741B45CD9A004F8C6B /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageViewController.swift; sourceTree = "<group>"; };
-		27D38AF91B3ECA23005D733E /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		27E186151B49870800A830DD /* Dish+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dish+CoreDataProperties.swift"; path = "../Dish+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27E186161B49870800A830DD /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dish.swift; path = ../Dish.swift; sourceTree = "<group>"; };
+		27E186171B49870800A830DD /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataProperties.swift"; path = "../Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27E186181B49870800A830DD /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = ../Restaurant.swift; sourceTree = "<group>"; };
 		27E900291B425EBF003BE505 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27E9002B1B425ED4003BE505 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +122,6 @@
 		271C2E401B387CF2002E15CD /* Foodly */ = {
 			isa = PBXGroup;
 			children = (
-				2739B7EC1B40520B00FCF5C9 /* MyPlayground.playground */,
 				271C2E751B38A959002E15CD /* Model */,
 				271C2E771B38A9A8002E15CD /* Controller */,
 				271C2E761B38A961002E15CD /* View */,
@@ -127,6 +131,7 @@
 				271C2E481B387CF2002E15CD /* Assets.xcassets */,
 				271C2E4D1B387CF2002E15CD /* Info.plist */,
 				27E9002A1B425EBF003BE505 /* Localizable.strings */,
+				272B25DB1B45D29100DA6445 /* Model.xcdatamodeld */,
 			);
 			path = Foodly;
 			sourceTree = "<group>";
@@ -152,8 +157,10 @@
 		271C2E751B38A959002E15CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				271C2E781B38AADA002E15CD /* Restaurant.swift */,
-				27D38AF91B3ECA23005D733E /* Dish.swift */,
+				27E186151B49870800A830DD /* Dish+CoreDataProperties.swift */,
+				27E186161B49870800A830DD /* Dish.swift */,
+				27E186171B49870800A830DD /* Restaurant+CoreDataProperties.swift */,
+				27E186181B49870800A830DD /* Restaurant.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -246,6 +253,12 @@
 				TargetAttributes = {
 					271C2E3D1B387CF2002E15CD = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = CKJPC95UYE;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					271C2E511B387CF2002E15CD = {
 						CreatedOnToolsVersion = 7.0;
@@ -310,17 +323,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271C2E791B38AADA002E15CD /* Restaurant.swift in Sources */,
 				271C2E721B388ECB002E15CD /* RestaurantCell.swift in Sources */,
 				271C2E741B38A859002E15CD /* RestaurantViewController.swift in Sources */,
+				27E186191B49870800A830DD /* Dish+CoreDataProperties.swift in Sources */,
 				271C2E421B387CF2002E15CD /* AppDelegate.swift in Sources */,
 				27723B771B3F234200810723 /* AddDishViewController.swift in Sources */,
 				27712CDA1B3B4F1E0092CCBE /* FoodlyManager.swift in Sources */,
 				27723B751B3F170900810723 /* AddRestaurantViewController.swift in Sources */,
-				27D38AFA1B3ECA23005D733E /* Dish.swift in Sources */,
 				27C376751B45CD9A004F8C6B /* ViewImageViewController.swift in Sources */,
 				275DA3431B3EC9D500CEDE00 /* DishCell.swift in Sources */,
+				27E1861B1B49870800A830DD /* Restaurant+CoreDataProperties.swift in Sources */,
+				27E1861C1B49870800A830DD /* Restaurant.swift in Sources */,
+				27E1861A1B49870800A830DD /* Dish.swift in Sources */,
 				271C2E701B388EA0002E15CD /* ListViewController.swift in Sources */,
+				272B25DD1B45D29100DA6445 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +428,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -451,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -463,11 +479,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Foodly/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.migueldiazrubio.Foodly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -475,11 +494,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Foodly/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.migueldiazrubio.Foodly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -571,6 +593,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		272B25DB1B45D29100DA6445 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				272B25DC1B45D29100DA6445 /* Model.xcdatamodel */,
+			);
+			currentVersion = 272B25DC1B45D29100DA6445 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 271C2E361B387CF1002E15CD /* Project object */;
 }

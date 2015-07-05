@@ -26,7 +26,7 @@ class RestaurantViewController: UIViewController, UITableViewDataSource, UITable
         let addDishButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addDish"))
         self.navigationItem.rightBarButtonItem = addDishButton
         
-        let coordinate2D = CLLocationCoordinate2D(latitude: restaurant!.latitude, longitude: restaurant!.longitude)
+        let coordinate2D = CLLocationCoordinate2D(latitude: Double(restaurant!.latitude!), longitude: Double(restaurant!.longitude!))
         
         let currentRegion = MKCoordinateRegion(center: coordinate2D, span: MKCoordinateSpanMake(0.005, 0.005))
         
@@ -61,8 +61,10 @@ class RestaurantViewController: UIViewController, UITableViewDataSource, UITable
         
         if segue.identifier == "viewImage" {
             let destinationVC = segue.destinationViewController as! ViewImageViewController
-            let dishSelected = self.restaurant?.dishes[self.tableView.indexPathForSelectedRow!.row]
-            destinationVC.dish = dishSelected!
+            
+            let dishesArray = Array(self.restaurant!.dishes!)
+            let dishSelected = dishesArray[self.tableView.indexPathForSelectedRow!.row] as! Dish
+            destinationVC.dish = dishSelected
         }
         
     }
@@ -78,7 +80,10 @@ class RestaurantViewController: UIViewController, UITableViewDataSource, UITable
     
     /* UITableViewDataSource */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurant!.dishes.count
+        if let dishes = restaurant?.dishes {
+            return dishes.count
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,7 +94,8 @@ class RestaurantViewController: UIViewController, UITableViewDataSource, UITable
         // UITableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("DishCell", forIndexPath: indexPath) as! DishCell
         
-        let dish = restaurant?.dishes[indexPath.row]
+        let dishesArray = Array(restaurant!.dishes!)
+        let dish = dishesArray[indexPath.row] as! Dish
         cell.dish = dish
         cell.dishImage.layer.cornerRadius = 8.0
         cell.dishImage.clipsToBounds = true
@@ -102,7 +108,8 @@ class RestaurantViewController: UIViewController, UITableViewDataSource, UITable
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
-            restaurant?.dishes.removeAtIndex(indexPath.row)
+            var dishes = Array(restaurant!.dishes!)
+            dishes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             // Primero hacerlo con reloadData y luego contar el método deleteRows...
 //            tableView.reloadData()

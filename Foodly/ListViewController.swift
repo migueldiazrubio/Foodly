@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -24,7 +25,7 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewWillAppear(animated)
         collectionView.reloadData()
     }
-    
+   
     /* UICollectionViewDelegate */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -45,20 +46,30 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     /* UICollectionViewDatasource */
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foodlyManager.restaurants.count
+        if let restaurants = foodlyManager.restaurants() {
+            return restaurants.count
+        }
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("restaurantCell", forIndexPath: indexPath) as! RestaurantCell
 
-        cell.restaurant = foodlyManager.restaurants[indexPath.row]
+        let restaurants = Array(foodlyManager.restaurants()!)
+        
+        cell.restaurant = restaurants[indexPath.row]
         cell.backgroundColor = UIColor.whiteColor()
-        if let randomImage = foodlyManager.randomImageFromRestaurant(cell.restaurant!) {
-            cell.imageView.image = randomImage
-        } else {
-            cell.imageView.image = UIImage(named: "no-picture")
+        
+        let dishes = cell.restaurant!.dishes!
+        if dishes.count > 0 {
+            if let dish = dishes.objectAtIndex(0) as? Dish {
+                cell.imageView.image = UIImage(data: dish.image!)
+            } else {
+                cell.imageView.image = UIImage(named: "no-picture")
+            }
         }
+        
         cell.imageView.layer.borderWidth = 0.5
         cell.imageView.layer.borderColor = UIColor.darkGrayColor().CGColor
         cell.imageView.layer.cornerRadius = 8.0
@@ -69,11 +80,8 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        
         let screenSize = self.view.frame.size
         
-        print("screenSize.width: \(screenSize.width)")
-
         var colsForRow : Int = 2
         if screenSize.width >= 414.0 {
             colsForRow = 3
@@ -83,9 +91,9 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         let cellWidth = (Int(screenSize.width) - ((colsForRow * 20) + 20)) / colsForRow
-        
+
         return CGSizeMake(CGFloat(cellWidth), CGFloat(cellWidth + 30))
         
     }
-    
+        
 }

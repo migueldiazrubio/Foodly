@@ -15,7 +15,7 @@ class DishCell: UITableViewCell {
     
     var dish : Dish? {
         willSet(newValue) {
-            self.dishImage.image = newValue?.image
+            self.dishImage.image = UIImage(data: (newValue?.image)!)
             self.commentLabel.text = newValue?.comment
         }
     }
