@@ -2,7 +2,7 @@
 //  Dish+CoreDataProperties.swift
 //  Foodly
 //
-//  Created by migueldiazrubio on 5/7/15.
+//  Created by migueldiazrubio on 9/7/15.
 //  Copyright © 2015 Miguel Díaz Rubio. All rights reserved.
 //
 //  Delete this file and regenerate it using "Create NSManagedObject Subclass…"

@@ -74,7 +74,7 @@ class RestaurantViewController: UIViewController, UITableViewDataSource, UITable
         self.restaurant = restaurant
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

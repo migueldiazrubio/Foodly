@@ -23,71 +23,58 @@ class FoodlyManager {
         
         return Static.instance!
     }
-    
+
+    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     func restaurants() -> Array<Restaurant>? {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
         // Retrieve all restaurants
         let fetchRequest = NSFetchRequest(entityName: "Restaurant")
 
         do {
-        
             if let restaurants = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [Restaurant] {
-                
                 return restaurants
             }
-        
         } catch {
             print("Error while loading restaurants")
         }
-        
         return nil
     }
     
     func addRestaurant(title: String, latitude: Double, longitude: Double, address: String) -> Restaurant {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
         let restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: appDelegate.managedObjectContext) as! Restaurant
         
         restaurant.title = title
         restaurant.latitude = latitude
         restaurant.longitude = longitude
         restaurant.address = address
+        
+        save()
+
         return restaurant
     
     }
     
     func addDishToRestaurant(restaurant : Restaurant, image: UIImage, comment: String) -> Dish {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
         let dish = NSEntityDescription.insertNewObjectForEntityForName("Dish", inManagedObjectContext: appDelegate.managedObjectContext) as! Dish
         
         dish.image = UIImagePNGRepresentation(image)
         dish.comment = comment
         dish.restaurant = restaurant
-
+        
+        save()
+        
         return dish
     }
     
-//    func randomImageFromRestaurant(restaurant : Restaurant) -> UIImage? {
-//        
-//        let dishNumber : Int = restaurant.dishes!.count
-//        if dishNumber > 0 {
-//            let randomDishNumber = Int(arc4random_uniform(UInt32(dishNumber - 1)))
-//            let dish = restaurant.dishes[randomDishNumber] as! Dish
-//            return UIImage(data: dish.image)
-//        } else {
-//            return nil
-//        }
-//        
-//    }
+    func deleteRestaurant (restaurant: Restaurant) {
+        appDelegate.managedObjectContext.deleteObject(restaurant)
+        save()
+    }
     
     func save() {
-
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.saveContext()
     }
     

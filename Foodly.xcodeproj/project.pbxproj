@@ -20,11 +20,11 @@
 		27712CDA1B3B4F1E0092CCBE /* FoodlyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27712CD91B3B4F1E0092CCBE /* FoodlyManager.swift */; };
 		27723B751B3F170900810723 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723B741B3F170900810723 /* AddRestaurantViewController.swift */; };
 		27723B771B3F234200810723 /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723B761B3F234200810723 /* AddDishViewController.swift */; };
+		27ACD6DA1B4EE26500645B32 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ACD6D61B4EE26500645B32 /* Restaurant+CoreDataProperties.swift */; };
+		27ACD6DB1B4EE26500645B32 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ACD6D71B4EE26500645B32 /* Restaurant.swift */; };
+		27ACD6DC1B4EE26500645B32 /* Dish+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ACD6D81B4EE26500645B32 /* Dish+CoreDataProperties.swift */; };
+		27ACD6DD1B4EE26500645B32 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ACD6D91B4EE26500645B32 /* Dish.swift */; };
 		27C376751B45CD9A004F8C6B /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C376741B45CD9A004F8C6B /* ViewImageViewController.swift */; };
-		27E186191B49870800A830DD /* Dish+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186151B49870800A830DD /* Dish+CoreDataProperties.swift */; };
-		27E1861A1B49870800A830DD /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186161B49870800A830DD /* Dish.swift */; };
-		27E1861B1B49870800A830DD /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186171B49870800A830DD /* Restaurant+CoreDataProperties.swift */; };
-		27E1861C1B49870800A830DD /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E186181B49870800A830DD /* Restaurant.swift */; };
 		27E900281B425EBF003BE505 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E9002A1B425EBF003BE505 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -65,11 +65,12 @@
 		27712CD91B3B4F1E0092CCBE /* FoodlyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodlyManager.swift; sourceTree = "<group>"; };
 		27723B741B3F170900810723 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		27723B761B3F234200810723 /* AddDishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
+		27ACD6D61B4EE26500645B32 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27ACD6D71B4EE26500645B32 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		27ACD6D81B4EE26500645B32 /* Dish+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dish+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27ACD6D91B4EE26500645B32 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		27ACD75A1B4EEC6300645B32 /* Foodly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Foodly.entitlements; sourceTree = "<group>"; };
 		27C376741B45CD9A004F8C6B /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewImageViewController.swift; sourceTree = "<group>"; };
-		27E186151B49870800A830DD /* Dish+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dish+CoreDataProperties.swift"; path = "../Dish+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		27E186161B49870800A830DD /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dish.swift; path = ../Dish.swift; sourceTree = "<group>"; };
-		27E186171B49870800A830DD /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Restaurant+CoreDataProperties.swift"; path = "../Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		27E186181B49870800A830DD /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = ../Restaurant.swift; sourceTree = "<group>"; };
 		27E900291B425EBF003BE505 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27E9002B1B425ED4003BE505 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,10 +123,11 @@
 		271C2E401B387CF2002E15CD /* Foodly */ = {
 			isa = PBXGroup;
 			children = (
+				27ACD75A1B4EEC6300645B32 /* Foodly.entitlements */,
+				27712CD91B3B4F1E0092CCBE /* FoodlyManager.swift */,
 				271C2E751B38A959002E15CD /* Model */,
 				271C2E771B38A9A8002E15CD /* Controller */,
 				271C2E761B38A961002E15CD /* View */,
-				27712CD91B3B4F1E0092CCBE /* FoodlyManager.swift */,
 				271C2E411B387CF2002E15CD /* AppDelegate.swift */,
 				271C2E451B387CF2002E15CD /* Main.storyboard */,
 				271C2E481B387CF2002E15CD /* Assets.xcassets */,
@@ -157,10 +159,10 @@
 		271C2E751B38A959002E15CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				27E186151B49870800A830DD /* Dish+CoreDataProperties.swift */,
-				27E186161B49870800A830DD /* Dish.swift */,
-				27E186171B49870800A830DD /* Restaurant+CoreDataProperties.swift */,
-				27E186181B49870800A830DD /* Restaurant.swift */,
+				27ACD6D61B4EE26500645B32 /* Restaurant+CoreDataProperties.swift */,
+				27ACD6D71B4EE26500645B32 /* Restaurant.swift */,
+				27ACD6D81B4EE26500645B32 /* Dish+CoreDataProperties.swift */,
+				27ACD6D91B4EE26500645B32 /* Dish.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -256,7 +258,7 @@
 						DevelopmentTeam = CKJPC95UYE;
 						SystemCapabilities = {
 							com.apple.iCloud = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -325,16 +327,16 @@
 			files = (
 				271C2E721B388ECB002E15CD /* RestaurantCell.swift in Sources */,
 				271C2E741B38A859002E15CD /* RestaurantViewController.swift in Sources */,
-				27E186191B49870800A830DD /* Dish+CoreDataProperties.swift in Sources */,
+				27ACD6DC1B4EE26500645B32 /* Dish+CoreDataProperties.swift in Sources */,
 				271C2E421B387CF2002E15CD /* AppDelegate.swift in Sources */,
+				27ACD6DA1B4EE26500645B32 /* Restaurant+CoreDataProperties.swift in Sources */,
 				27723B771B3F234200810723 /* AddDishViewController.swift in Sources */,
 				27712CDA1B3B4F1E0092CCBE /* FoodlyManager.swift in Sources */,
 				27723B751B3F170900810723 /* AddRestaurantViewController.swift in Sources */,
 				27C376751B45CD9A004F8C6B /* ViewImageViewController.swift in Sources */,
+				27ACD6DD1B4EE26500645B32 /* Dish.swift in Sources */,
+				27ACD6DB1B4EE26500645B32 /* Restaurant.swift in Sources */,
 				275DA3431B3EC9D500CEDE00 /* DishCell.swift in Sources */,
-				27E1861B1B49870800A830DD /* Restaurant+CoreDataProperties.swift in Sources */,
-				27E1861C1B49870800A830DD /* Restaurant.swift in Sources */,
-				27E1861A1B49870800A830DD /* Dish.swift in Sources */,
 				271C2E701B388EA0002E15CD /* ListViewController.swift in Sources */,
 				272B25DD1B45D29100DA6445 /* Model.xcdatamodeld in Sources */,
 			);
@@ -479,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Foodly/Foodly.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Foodly/Info.plist;
@@ -494,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Foodly/Foodly.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Foodly/Info.plist;

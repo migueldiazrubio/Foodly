@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="k7O-XR-AXr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="k7O-XR-AXr">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
     </dependencies>
     <scenes>
         <!--Foodly-->
@@ -53,6 +53,14 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="wgy-V3-XxD">
+                                                    <rect key="frame" x="54" y="8" width="22" height="22"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="EhG-Ij-OF4"/>
+                                                        <constraint firstAttribute="height" constant="22" id="uCh-IC-Um1"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -62,16 +70,18 @@
                                             <constraint firstAttribute="trailing" secondItem="f9E-lo-yLG" secondAttribute="trailing" id="1AK-wU-IJa"/>
                                             <constraint firstAttribute="trailing" secondItem="HMB-FR-qlE" secondAttribute="trailing" id="2uD-l2-lCm"/>
                                             <constraint firstAttribute="bottom" secondItem="HMB-FR-qlE" secondAttribute="bottom" constant="4" id="6wG-PO-gEY"/>
+                                            <constraint firstItem="wgy-V3-XxD" firstAttribute="top" secondItem="I1I-la-t6t" secondAttribute="top" constant="8" id="Cru-Ys-y2I"/>
                                             <constraint firstItem="HMB-FR-qlE" firstAttribute="leading" secondItem="I1I-la-t6t" secondAttribute="leading" id="Ih4-uC-VNe"/>
                                             <constraint firstItem="HMB-FR-qlE" firstAttribute="top" secondItem="f9E-lo-yLG" secondAttribute="bottom" constant="6" id="Qs9-Kf-Ylz"/>
                                             <constraint firstItem="f9E-lo-yLG" firstAttribute="top" secondItem="I1I-la-t6t" secondAttribute="top" id="ebA-Qt-gug"/>
+                                            <constraint firstItem="wgy-V3-XxD" firstAttribute="centerX" secondItem="I1I-la-t6t" secondAttribute="centerX" id="uYL-n5-czf"/>
                                             <constraint firstItem="f9E-lo-yLG" firstAttribute="leading" secondItem="I1I-la-t6t" secondAttribute="leading" id="y8d-a2-KKc"/>
                                         </constraints>
                                         <size key="customSize" width="130" height="160"/>
                                         <connections>
                                             <outlet property="imageView" destination="f9E-lo-yLG" id="Qxr-Ya-tyV"/>
+                                            <outlet property="selectedImage" destination="wgy-V3-XxD" id="NTw-jG-w8B"/>
                                             <outlet property="titleLabel" destination="HMB-FR-qlE" id="V8e-i7-hMd"/>
-                                            <segue destination="KCS-qn-M49" kind="show" identifier="detailSegue" id="z4D-0F-I92"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -80,12 +90,31 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Vz-4B-NVE"/>
                                 </connections>
                             </collectionView>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-P8-nLI">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xLR-k6-3Yj"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="k4O-Ww-u8o"/>
+                                    <barButtonItem title="Item" systemItem="trash" id="QfO-q1-Xja">
+                                        <connections>
+                                            <action selector="trashSelectedElements:" destination="BYZ-38-t0r" id="RZh-tA-9uQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FTf-p6-Mza"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fXN-P8-nLI" secondAttribute="bottom" id="5XU-kR-cYx"/>
                             <constraint firstItem="amG-7W-SKc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NoZ-lI-uY4"/>
                             <constraint firstAttribute="trailing" secondItem="amG-7W-SKc" secondAttribute="trailing" id="OV6-Ll-Koh"/>
+                            <constraint firstAttribute="trailing" secondItem="fXN-P8-nLI" secondAttribute="trailing" id="SpY-SN-o0k"/>
+                            <constraint firstItem="fXN-P8-nLI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="e5q-su-5y4"/>
                             <constraint firstItem="amG-7W-SKc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ghI-T1-Ch8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="amG-7W-SKc" secondAttribute="bottom" id="u3F-PU-013"/>
                         </constraints>
@@ -99,7 +128,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButtonItem" destination="qeK-Yl-duk" id="PyC-JG-p1z"/>
                         <outlet property="collectionView" destination="amG-7W-SKc" id="L3p-Uv-6q1"/>
+                        <outlet property="toolBar" destination="fXN-P8-nLI" id="PBY-aC-3R1"/>
+                        <segue destination="KCS-qn-M49" kind="show" identifier="detailSegue" id="Cfe-Gw-Laa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -130,7 +162,7 @@
                                     <outlet property="delegate" destination="9M5-L1-zMV" id="u3k-Jv-bZt"/>
                                 </connections>
                             </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lc9-tB-Cgu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lc9-tB-Cgu">
                                 <rect key="frame" x="0.0" y="110" width="600" height="490"/>
                                 <animations/>
                             </mapView>
@@ -437,6 +469,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Unchecked" width="22" height="22"/>
         <image name="no-picture" width="260" height="260"/>
     </resources>
 </document>

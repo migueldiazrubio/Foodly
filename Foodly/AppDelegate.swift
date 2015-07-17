@@ -21,19 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        FoodlyManager.sharedInstance.populateRestaurants()
 //        FoodlyManager.sharedInstance.load()
+        
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-        FoodlyManager.sharedInstance.save()
+        saveContext()
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        FoodlyManager.sharedInstance.save()
+        saveContext()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -48,13 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        FoodlyManager.sharedInstance.save()
+        saveContext()
     }
-    
+
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.migueldiazrubio.aaaa" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.migueldiazrubio.PruebaCoreData" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
         }()
@@ -66,13 +67,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        
+        let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("FoodlyCoreData.sqlite")
+        
+        var storeOptions =
+        [NSPersistentStoreUbiquitousContentNameKey : "FoodlyStore"
+            // NSPersistentStoreRebuildFromUbiquitousContentOption: @(true)
+        ]
+        
+        // Register for notifications
+        self.registerCoordinatorForStoreNotifications(coordinator)
+        
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: storeOptions)
+            
         } catch {
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -111,6 +124,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
             }
+        }
+    }
+    
+    func registerCoordinatorForStoreNotifications (coordinator : NSPersistentStoreCoordinator) {
+        let nc : NSNotificationCenter = NSNotificationCenter.defaultCenter();
+        
+        nc.addObserver(self, selector: "handleStoresWillChange:",
+            name: NSPersistentStoreCoordinatorStoresWillChangeNotification,
+            object: coordinator)
+        
+        nc.addObserver(self, selector: "handleStoresDidChange:",
+            name: NSPersistentStoreCoordinatorStoresDidChangeNotification,
+            object: coordinator)
+        
+        nc.addObserver(self, selector: "handleStoreChangedUbiquitousContent:",
+            name: NSPersistentStoreDidImportUbiquitousContentChangesNotification,
+            object: coordinator)
+    }
+    
+    func handleStoresWillChange(notification : NSNotification) {
+        let context = self.managedObjectContext
+        
+        context.performBlockAndWait { () -> Void in
+
+            do {
+                if context.hasChanges {
+                    try context.save()
+                }
+            } catch {
+                print("Error while saving to context")
+            }
+            context.reset()
+            
+        }
+        
+        // Block UI
+        print("-----> BLOCK UI")
+        
+         // Refresh your User Interface.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName("iCloudUpdateUI", object: nil)
+        print("Updating iCloud...")
+    }
+    
+    func handleStoresDidChange(notification : NSNotification) {
+        
+        print("-----> UNBLOCK UI")
+
+        // Refresh your User Interface.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName("iCloudUpdateUI", object: nil)
+        print("Updated iCloud.")
+        
+    }
+    
+    func handleStoreChangedUbiquitousContent(notification : NSNotification) {
+        print("Merging data from iCloud...")
+        let context = self.managedObjectContext
+        context.performBlock { () -> Void in
+            context.mergeChangesFromContextDidSaveNotification(notification)
+
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            notificationCenter.postNotificationName("iCloudUpdateUI", object: nil)
         }
     }
 

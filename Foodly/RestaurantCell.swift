@@ -10,9 +10,24 @@ import UIKit
 
 class RestaurantCell: UICollectionViewCell {
     
+    @IBOutlet weak var selectedImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var editing : Bool = false {
+        didSet {
+            titleLabel.hidden = editing
+            selectedImage.hidden = !editing
+        }
+    }
+    
+    override var selected: Bool {
+        didSet {
+            if editing {
+                selectedImage.image = UIImage(named: selected ? "Checked" : "Unchecked")
+            }
+        }
+    }
     
     var restaurant : Restaurant? {
         willSet(newValue) {

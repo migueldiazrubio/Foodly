@@ -12,6 +12,8 @@ import CoreLocation
 
 class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
     
+    var foodlyManager = FoodlyManager.sharedInstance
+    
     var locationManager : CLLocationManager?
     var userLocation : CLLocation?
     var userLocationDescription : String?
@@ -24,7 +26,7 @@ class AddRestaurantViewController: UIViewController, CLLocationManagerDelegate {
         
         if textField.text != "" && userLocation != nil && userLocationDescription != "" {
             
-            FoodlyManager.sharedInstance.addRestaurant(textField.text!, latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, address: userLocationDescription!)
+            foodlyManager.addRestaurant(textField.text!, latitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, address: userLocationDescription!)
             
             self.dismissViewControllerAnimated(true, completion: nil)
             

@@ -10,6 +10,8 @@ import UIKit
 
 class AddDishViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var foodlyManager = FoodlyManager.sharedInstance
+    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -32,7 +34,7 @@ class AddDishViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func save(sender: AnyObject) {
         
         if textField.text != "" && imageView.image != nil {
-            FoodlyManager.sharedInstance.addDishToRestaurant(restaurant!, image: imageView.image!, comment: textField.text!)
+            foodlyManager.addDishToRestaurant(restaurant!, image: imageView.image!, comment: textField.text!)
             self.dismissViewControllerAnimated(true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Error", message: "Debe introducir un nombre para el plato", preferredStyle: UIAlertControllerStyle.Alert)
